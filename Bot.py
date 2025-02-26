@@ -1,4 +1,6 @@
-from flask import Flask, request
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080from flask import Flask, request
 import openai
 from twilio.twiml.messaging_response import MessagingResponse
 
