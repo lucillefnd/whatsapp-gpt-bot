@@ -20,7 +20,9 @@ def bot():
         )
         reply = gpt_response["choices"][0]["message"]["content"]
     except Exception as e:
-        reply = "Oops, un problème est survenu."
+    print(f"Erreur OpenAI: {e}")  # Affiche l'erreur dans les logs
+    reply = f"Erreur OpenAI: {e}"  # Envoie cette erreur dans WhatsApp pour débogage
+        
 
     response.message(reply)
     return str(response)
