@@ -15,11 +15,15 @@ def bot():
 
     try:
         # Envoi du message à ChatGPT
-        gpt_response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[{"role": "user", "content": incoming_msg}]
-        )
-        reply = gpt_response["choices"][0]["message"]["content"]
+        from openai import OpenAI
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+gpt_response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": incoming_msg}]
+)
+reply = gpt_response.choices[0].message["content"]
     except Exception as e:
         print(f"Erreur OpenAI: {e}")  # Affiche l'erreur dans les logs
         reply = f"Erreur OpenAI: {e}"  # Envoie cette erreur dans WhatsApp pour débogage
