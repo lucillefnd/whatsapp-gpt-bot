@@ -18,9 +18,9 @@ def bot():
         client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
         gpt_response = client.chat.completions.create(
-        model="gpt-4-turbo",
+        model="gpt-3.5-turbo",  # Essaie ce modèle à la place de gpt-4-turbo
         messages=[{"role": "user", "content": incoming_msg}]
-        )
+)
         reply = gpt_response.choices[0].message["content"]
 
     except Exception as e:
