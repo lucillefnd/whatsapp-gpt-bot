@@ -15,7 +15,7 @@ def bot():
 
     try:
         # Envoi du message à ChatGPT
-        gpt_response = client.chat.completions.create(
+        gpt_response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[{"role": "user", "content": incoming_msg}]            
         )
