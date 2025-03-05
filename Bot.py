@@ -21,7 +21,7 @@ def bot():
         model="gpt-3.5-turbo",  # Essaie ce modèle à la place de gpt-4-turbo
         messages=[{"role": "user", "content": incoming_msg}]
 )
-        reply = gpt_response.choices[0].message["content"]
+        reply = gpt_response.choices[0].message.content
 
     except Exception as e:
         print(f"Erreur OpenAI: {e}")  # Affiche l'erreur dans les logs
